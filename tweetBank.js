@@ -1,14 +1,16 @@
 var _ = require('lodash');
-var data = [];
+var data = [{ name: "Jenna Zenk", text: "Jon is the best partner in the 1604 cohort." }, {name: "Jon Schwarz", text: "Jenna is the best partner in the history of coding bootcamps." }, {name: "Jon Schwarz", text: "I am the best partner in the history of partners." }];
 
 function add (name, text) {
   data.push({ name: name, text: text });
 }
 
+// creating a copy of data
 function list () {
   return _.cloneDeep(data);
 }
 
+// filters data array based on predicate, and then creates a copy
 function find (properties) {
   return _.cloneDeep(_.filter(data, properties));
 }
@@ -38,4 +40,4 @@ for (var i = 0; i < 10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
 }
 
-console.log(data)
+// console.log(find(function(tweet) {return (/history/).test(tweet.text);}))

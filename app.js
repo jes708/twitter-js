@@ -3,6 +3,8 @@
 var express = require( 'express' );
 var swig = require('swig');
 var app = express();
+var routes = require('./routes/');
+app.use('/', routes);
 
 app.use(function (req, res, next) {
     // do your logging here
@@ -16,21 +18,6 @@ app.use('/special/', function(req, res, next) {
   console.log("you reached the special area.")
   next();
 })
-
-app.get('/', function (req, res) {
-  res.send('Welcome to THE best tweet app...EVER!!!!');
-});
-
-app.get('/news', function (req, res) {
-  res.send('Welcome to THE best tweet app news page...EVER!!!!');
-});
-
-app.get('/special', function (req, res) {
-  var tweets = [{name: 'I like Fullstack'}, {name: 'I am a Fullstacker'}, {name: 'My son is a Fullstacker too'}];
-  res.render( 'index', {title: 'Special', people: tweets} );
-});
-
-
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
