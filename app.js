@@ -26,8 +26,8 @@ app.get('/news', function (req, res) {
 });
 
 app.get('/special', function (req, res) {
-  var people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
-  res.render( 'index', {title: 'Hall of Fame', people: people} );
+  var tweets = [{name: 'I like Fullstack'}, {name: 'I am a Fullstacker'}, {name: 'My son is a Fullstacker too'}];
+  res.render( 'index', {title: 'Special', people: tweets} );
 });
 
 
