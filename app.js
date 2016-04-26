@@ -29,17 +29,18 @@ app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
 
-var locals = {
-    title: 'An Example',
-    people: [
-        { name: 'Gandalf'},
-        { name: 'Frodo' },
-        { name: 'Hermione'}
-    ]
-};
-swig.renderFile(__dirname + '/views/index.html', locals, function (err, output) {
-    console.log(output);
-});
+// var locals = {
+//     title: 'An Example',
+//     people: [
+//         { name: 'Gandalf'},
+//         { name: 'Frodo' },
+//         { name: 'Hermione'}
+//     ]
+// };
+// swig.renderFile(__dirname + '/views/index.html', locals, function (err, output) {
+//     console.log(output);
+// });
 
 swig.setDefaults({ cache: false });
 
+app.use(express.static('public'));
