@@ -2,27 +2,27 @@
 
 var express = require( 'express' );
 var swig = require('swig');
+var bodyParser = require('body-parser');
 var app = express();
 var routes = require('./routes/');
-app.use('/', routes);
+
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
+
 
 app.use(function (req, res, next) {
-    // do your logging here
-    // call `next`, or else your app will be a black hole — receiving requests but never properly responding
-    console.log(req.method)
-    console.log(req.url)
-    next();
-})
-
-app.use('/special/', function(req, res, next) {
-  console.log("you reached the special area.")
+  console.log(req.method)
+  console.log(req.url)
   next();
 })
+
+app.use('/', routes);
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
-
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
