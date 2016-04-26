@@ -1,6 +1,7 @@
 // small change
 
 var express = require( 'express' );
+var swig = require('swig');
 var app = express();
 
 app.use(function (req, res, next) {
@@ -25,7 +26,8 @@ app.get('/news', function (req, res) {
 });
 
 app.get('/special', function (req, res) {
-  res.send('Welcome to THE best tweet app special page...EVER!!!!');
+  var people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
+  res.render( 'index', {title: 'Hall of Fame', people: people} );
 });
 
 
@@ -33,3 +35,24 @@ app.get('/special', function (req, res) {
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
+
+
+app.engine('html', swig.renderFile);
+app.set('view engine', 'html');
+app.set('views', __dirname + '/views');
+
+
+var locals = {
+    title: 'An Example',
+    people: [
+        { name: 'Gandalf'},
+        { name: 'Frodo' },
+        { name: 'Hermione'}
+    ]
+};
+swig.renderFile(__dirname + '/views/index.html', locals, function (err, output) {
+    console.log(output);
+});
+
+swig.setDefaults({ cache: false });
+
