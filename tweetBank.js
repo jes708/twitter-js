@@ -3,6 +3,7 @@ var data = [{ name: "Jenna Zenk", text: "Jon is the best partner in the 1604 coh
 {name: "Jon Schwarz", text: "Jenna is the best partner in the history of coding bootcamps.", id: '1' }, 
 {name: "Jon Schwarz", text: "I am the best partner in the history of partners.", id: '2' }];
 
+// pushes tweet data to array
 function add (name, text) {
   data.push({ name: name, text: text, id: String(data.length) });
 }

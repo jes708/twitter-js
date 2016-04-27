@@ -4,6 +4,7 @@ var express = require( 'express' );
 var swig = require('swig');
 var bodyParser = require('body-parser');
 var app = express();
+var socketio = require('socket.io');
 var routes = require('./routes/');
 
 
@@ -20,10 +21,10 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 
-app.listen(3000, function () {
+var server = app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
-
+var io = socketio.listen(server);
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
