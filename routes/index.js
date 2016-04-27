@@ -32,7 +32,7 @@ module.exports = function(io) {
   router.get('/tweets/:id', function(req, res) {
     var id = req.params.id;
     var list = tweetBank.find( {id: id} );
-    res.render( 'index', { title: 'Twitter.js - Posts by ' + id, tweets: list } );
+    res.render( 'index', { title: 'Twitter.js - Post ' + id, tweets: list } );
   });
   
   io.sockets.emit('new_tweet', { name: "Jenna Zenk", text: "Jon is the best partner in the 1604 cohort.", id: '66' });
